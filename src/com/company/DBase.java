@@ -18,7 +18,7 @@ public class DBase {
 
     private DBase(){
         try {
-            this.connection = DriverManager.getConnection("jdbc:sqlite::database.sqlite3");
+            this.connection = DriverManager.getConnection("jdbc:sqlite:database.sqlite3");
             System.out.println("База Подключена!");
         } catch (SQLException e) {
             System.out.println("Драйвер базы данных не был подключен!!");
@@ -67,7 +67,7 @@ public class DBase {
                     "SELECT MAX(economy) FROM happynes_country WHERE region = 'Latin America and Caribbean' OR region = 'Eastern Asia')");
             return new Tuple<>(dataFromDb.getString("country"), dataFromDb.getFloat("economy"));
         } catch (SQLException e){
-            System.out.println("Невозможно получить данные о стране");
+            System.out.println("Невозможно получить данные о стране1");
             e.printStackTrace();
             return null;
         }
@@ -87,7 +87,7 @@ public class DBase {
                             "WHERE Region = 'Western Europe' or Region = 'North America'");
             return middledata.getString("Country");
         } catch (SQLException e){
-            System.out.println("Невозможно получить данные о стране");
+            System.out.println("Невозможно получить данные о стране2");
             e.printStackTrace();
             return "";
         }

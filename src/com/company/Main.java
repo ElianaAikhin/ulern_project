@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args){
         List<Country2015> dataCSV = ParserCSV.ParseCountry2015Csv("C:\\Users\\Элиана\\Downloads\\country2015.csv");
         DBase dbInstance = DBase.getInstance();
+        //dbInstance.createTable();
         Map<String, Float> dataDb = dbInstance.getCountryEconomy();
         Tuple<String, Float> maxEconomy = dbInstance.getCountryWithMaxEconomy();
         String middleCountry = dbInstance.getMiddleCountry();
