@@ -18,10 +18,10 @@ public class DBase {
 
     private DBase(){
         try {
-            this.connection = DriverManager.getConnection("jdbc:sqlite::resource:database.sqlite3");
+            this.connection = DriverManager.getConnection("jdbc:sqlite::database.sqlite3");
             System.out.println("База Подключена!");
         } catch (SQLException e) {
-            System.out.println("Драйвер базы данных не был подключен!");
+            System.out.println("Драйвер базы данных не был подключен!!");
             e.printStackTrace();
         }
     }
