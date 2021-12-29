@@ -63,7 +63,7 @@ public class DBase {
 
     public Tuple<String, Float> getCountryWithMaxEconomy(){
         try (Statement statement = this.connection.createStatement()) {
-            ResultSet dataFromDb = statement.executeQuery("SELECT country, economy FROM happynes_country WHERE economy = )" +
+            ResultSet dataFromDb = statement.executeQuery("SELECT country, economy FROM happynes_country WHERE economy = (" +
                     "SELECT MAX(economy) FROM happynes_country WHERE region = 'Latin America and Caribbean' OR region = 'Eastern Asia')");
             return new Tuple<>(dataFromDb.getString("country"), dataFromDb.getFloat("economy"));
         } catch (SQLException e){
@@ -96,7 +96,7 @@ public class DBase {
     public void addCountryList(List<Country2015> country) {
         if (country.size() < 1)
             return;
-        String sqlQuery = "INSERT INTO happynes_country VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sqlQuery = "INSERT INTO happynes_country VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement statement = this.connection.prepareStatement(sqlQuery)) {
             connection.setAutoCommit(false);
             for (Country2015 countryObj : country) {
